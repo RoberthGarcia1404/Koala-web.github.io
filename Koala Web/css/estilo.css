@@ -1,685 +1,485 @@
-/* Reset */
-* {
+/* Reset y base */
+*,
+::before,
+::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box
 }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: #f7f7f700;
-  overflow-x: hidden;
+  overflow-x: hidden
 }
 
-/* =========================== */
-/* RESET Y ESTILOS BASE */
-
-/* MENÚ PRINCIPAL */
+/* Navegación */
 .scout-nav {
-    position: fixed;
-    top: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 92%;
-    max-width: 1200px;
-    height: 60px;
-    background: rgba(15, 15, 15, 0.9);
-    backdrop-filter: blur(20px);
-    border-radius: 22px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
-    z-index: 1000;
-    transition: all 0.3s ease;
+  position: fixed;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 1200px;
+  height: 60px;
+  background: rgba(15, 15, 15, .9);
+  backdrop-filter: blur(20px);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+  z-index: 1000;
+  transition: all .3s ease
 }
 
 .scout-nav.compact {
-    top: 15px;
-    height: 55px;
-    background: rgba(10, 10, 10, 0.95);
+  top: 15px;
+  height: 55px;
+  background: rgba(10, 10, 10, .95)
 }
 
-/* LOGO */
+/* Logo */
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #fff;
-    text-decoration: none;
-    flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  flex-shrink: 0
 }
 
-/* Imagen */
 .logo-img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    display: block;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  display: block
 }
 
-/* Texto del logo */
-.logo-text {
-    line-height: 1;
-    transition: opacity .25s ease, visibility .25s ease;
-}
-
-
-
-/* Texto del logo */
+.logo-text,
 .logo span {
-    line-height: 1;         /* evita saltos raros */
+  line-height: 1;
+  transition: opacity .25s ease, visibility .25s ease
 }
 
-/* MENÚ CENTRAL */
+/* Menú central */
 .nav-center {
-    display: flex;
-    gap: 40px;
+  display: flex;
+  gap: 40px
 }
 
 .nav-item {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
-    padding: 8px 0;
-    position: relative;
-    transition: color 0.2s ease;
+  color: rgba(255, 255, 255, .8);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 0;
+  position: relative;
+  transition: color .2s ease
 }
 
 .nav-item:hover {
-    color: #fff;
+  color: #fff
 }
 
 .nav-item.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: #fff;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff
 }
 
-/* ACCIONES */
+/* Acciones */
 .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px
 }
 
-/* BOTÓN RESERVA */
 .reserve-btn {
-    background: #fff;
-    color: #000;
-    border: none;
-    padding: 10px 28px;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 10px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all .2s ease
 }
 
 .reserve-btn:hover {
-    background: #f0f0f0;
-    transform: translateY(-1px);
+  background: #f0f0f0;
+  transform: translateY(-1px)
 }
 
-/* BOTÓN MÓVIL */
+/* Menú móvil */
 .mobile-toggle {
-    display: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    gap: 5px;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .15);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 5px
 }
 
 .mobile-toggle span {
-    width: 18px;
-    height: 2px;
-    background: #fff;
-    transition: all 0.3s ease;
+  width: 18px;
+  height: 2px;
+  background: #fff;
+  transition: all .3s ease
 }
 
-/* MENÚ MÓVIL */
 .mobile-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 300px;
-    height: 100vh;
-    background: rgba(15, 15, 15, 0.98);
-    backdrop-filter: blur(30px);
-    padding: 100px 30px 40px;
-    z-index: 999;
-    transition: right 0.3s ease;
-    overflow-y: auto;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100vh;
+  background: rgba(15, 15, 15, .98);
+  backdrop-filter: blur(30px);
+  padding: 100px 30px 40px;
+  z-index: 999;
+  transition: right .3s ease;
+  overflow-y: auto
 }
 
 .mobile-menu.active {
-    right: 0;
+  right: 0
 }
 
 .mobile-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px
 }
 
 .mobile-nav .nav-item {
-    font-size: 18px;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 18px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .1)
 }
 
 .mobile-reserve {
-    margin-top: 30px;
+  margin-top: 30px
 }
 
 .mobile-reserve .reserve-btn {
-    width: 100%;
+  width: 100%
 }
 
-/* OVERLAY */
 .menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 998;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s ease
 }
 
 .menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible
 }
 
-/* HERO SECTION */
-.hero {
-    height: 100vh;
+
+
+/* -------------------------------- */
+/*         HERO MEJORADO           */
+/* -------------------------------- */
+
+.hero-koala {
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 20px;
+    justify-content: space-between;
+
+    padding: 100px 220px;
+    padding-top: 150px;
+
+    background: linear-gradient(
+        to bottom,
+        #0d0d0d 50%,
+        #0f0f0ff8 100%
+    );
+
+    color: white;
+    gap: 70px;
+    position: relative;
 }
 
-.hero-content {
-    max-width: 600px;
+/* -------- IZQUIERDA -------- */
+.hero-left {
+    flex: 1;
+    max-width: 560px;
 }
 
-.hero h1 {
-    font-size: 4rem;
+.hero-left h1 {
+    font-size: 3.8rem;
     font-weight: 700;
-    margin-bottom: 20px;
-    line-height: 1.1;
+    line-height: 1.2;
+    min-height: 110px;
+   
 }
 
-.hero p {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 30px;
-    max-width: 500px;
+.subtitle {
+    font-size: 1.25rem;
+    margin-top: 25px;
+    opacity: 0.85;
 }
 
-.hero-btn {
-    background: #fff;
-    color: #000;
-    border: none;
-    padding: 16px 36px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.2s ease;
+.cta-btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 14px 32px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.25s;
 }
 
-.hero-btn:hover {
-    background: #f0f0f0;
-    transform: translateY(-2px);
+.cta-btn:hover {
+    background: white;
+    color: black;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-    .nav-center {
-        display: none;
-    }
-    
-    .mobile-toggle {
-        display: flex;
-    }
-    
-    .scout-nav {
-        padding: 0 20px;
-    }
-    
-    .hero h1 {
-        font-size: 3rem;
-    }
+/* -------- DERECHA (IMÁGENES) -------- */
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 420px;
 }
 
-@media (max-width: 768px) {
-    .scout-nav {
-        height: 55px;
-        border-radius: 10px;
-    }
-    
-    .scout-nav.compact {
-        height: 50px;
-    }
-    
-    .logo {
-        font-size: 1.6rem;
-    }
-    
-    .reserve-btn {
-        padding: 8px 22px;
-        font-size: 13px;
-    }
-    
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero p {
-        font-size: 1.1rem;
-    }
+.hero-right .slide {
+    width: 100%;
+    max-width: 560px;
+    border-radius: 22px;
+    object-fit: cover;
 
-
-    .logo-text {
-        opacity: 0;
-        visibility: hidden;
-        width: 0;
-        overflow: hidden;
-    }
-
-    /* Si quieres también reducir el gap cuando no hay texto */
-    .logo {
-        gap: 0;
-    }
-
+    position: absolute;
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 1.4s ease-in-out, transform 2.2s ease;
 }
 
-@media (max-width: 480px) {
-    .scout-nav {
-        width: 95%;
-        padding: 0 15px;
-    }
-    
-    .mobile-menu {
-        width: 85%;
-        padding: 90px 25px 30px;
-    }
-    
-    .hero h1 {
-        font-size: 2rem;
-    }
+.hero-right .slide.active {
+    opacity: 1;
+    transform: scale(1.05);
 }
 
-/* ----------------------------------------- */
-/* HERO */
-.hero {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 50px;
+/* -------- CURSOR -------- */
+.cursor {
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    50% { opacity: 0; }
 }
 
-/* Fondo con imágenes difuminadas */
-.bg-grid {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
-  padding: 40px;
-  opacity: 0.17;
-  filter: blur(3px);
-  pointer-events: none;
-}
-
-.bg-grid img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-/* Texto del Hero */
-.hero-text {
-  z-index: 2;
-  text-align: center;
-  width: 100%;
-}
-
-.hero-text h1 {
-  font-size: clamp(42px, 6vw, 110px);
-  font-weight: 900;
-  line-height: 1.1;
-}
-
-.sub1 {
-  font-size: 28px;
-  font-family: 'Playfair Display', serif;
-  opacity: 0.7;
-}
-
-.sub2 {
-  display: block;
-  font-size: 48px;
-  font-family: 'Playfair Display', serif;
-  opacity: 0.8;
-  margin-top: 10px;
-}
-
-.highlight {
-  color: #000;
-}
-
-/* RESPONSIVE */
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 900px) {
-  .bg-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 20px;
-  }
 
-  .nav {
-    padding: 15px 25px;
-  }
+    /* Cambiamos el orden sin tocar el HTML */
+    .hero-koala {
+        flex-direction: column;
+        padding: 115px 30px 100px; 
+        text-align: left;
+    }
 
-  .nav a {
-    font-size: 13px;
-  }
+    .hero-right {
+        order: -1;             /* 👉 IMAGEN ARRIBA */
+        width: 100%;
+        min-height: 270px;
+        margin-bottom: 40px;
+        margin-top: 0;
+    }
+
+    .hero-right .slide {
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .hero-left {
+        order: 2;              /* 👉 TEXTO ABAJO */
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-left h1 {
+        font-size: 2.7rem;
+        min-height: 90px;
+        line-height: 1.25;
+         
+    }
 }
 
-@media (max-width: 500px) {
-  .hero-text h1 {
-    font-size: 40px;
-  }
-
-  .sub2 {
-    font-size: 32px;
-  }
-}
 
 
 
-
-
-
-/* SECCIÓN CLIENTES */
+/* Sección clientes */
 .clients {
-  
-background: #0f0f0ff8;
-  padding: 60px 20px;
+  background: #0f0f0ff8;
+  padding: 40px 20px;
   color: #cfcfcf;
   text-align: center;
   width: 100%;
-  overflow: hidden;
+  overflow: hidden
 }
 
 .clients-title {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, .05);
   padding: 14px 35px;
-  border-radius: 22px;
+  border-radius: 15px;
   display: inline-block;
-  font-size: 19px;
+  font-size: 15px;
   margin-bottom: 6px;
-  max-width: 90%;
+  max-width: 90%
 }
 
 .logos-wrapper {
   width: 100%;
-  overflow: hidden;
+  overflow: hidden
 }
 
-/* Filas para escritorio */
 .logos-row {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 140px;
   margin: 50px 0;
-  transition: transform 0.3s ease-out;
-  flex-wrap: nowrap;
+  transition: transform .3s ease-out;
+  flex-wrap: nowrap
 }
 
 .logos-row img {
   height: 60px;
-  opacity: 0.85;
+  opacity: .85;
   filter: grayscale(100%);
-  transition: all 0.3s ease;
+  transition: all .3s ease;
   object-fit: contain;
-  max-width: 150px;
+  max-width: 150px
 }
 
 .logos-row img:hover {
   opacity: 1;
-  filter: grayscale(0%);
-  transform: scale(1.05);
+  filter: grayscale(0);
+  transform: scale(1.05)
 }
 
-/* RESPONSIVE: Tablet (2 columnas) */
-@media (max-width: 1024px) {
-  .clients {
-    padding: 50px 15px;
-  }
-  
-  .logos-row {
-    gap: 60px;
-  }
-  
-  .logos-row img {
-    height: 45px;
-  }
-}
-
-/* RESPONSIVE: Móvil (2 columnas) */
-@media (max-width: 768px) {
-  .clients {
-    padding: 40px 15px;
-  }
-  
-  .clients-title {
-    font-size: 16px;
-    padding: 10px 25px;
-    margin-bottom: 40px;
-    line-height: 1.4;
-  }
-  
-  /* Contenedor para 2 columnas */
-  .logos-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  /* Cada fila se convierte en contenedor de 2 columnas */
-  .logos-row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
-    gap: 30px 20px;
-    margin: 0;
-    padding: 0 20px;
-    transform: none !important;
-    justify-items: center;
-    align-items: center;
-  }
-  
-  /* Ajustar imágenes para 2 columnas */
-  .logos-row img {
-    height: 40px;
-    width: auto;
-    max-width: 130px;
-    margin: 0 auto;
-    display: block;
-  }
-  
-  /* Si hay 5 logos por fila, el último se centra */
-  .logos-row img:nth-child(odd):last-child {
-    grid-column: 1 / -1;
-    justify-self: center;
-  }
-}
-
-/* RESPONSIVE: Móvil pequeño (mantener 2 columnas pero más compacto) */
-@media (max-width: 480px) {
-  .clients {
-    padding: 30px 10px;
-  }
-  
-  .clients-title {
-    font-size: 14px;
-    padding: 8px 20px;
-    margin-bottom: 30px;
-  }
-  
-  .logos-row {
-    gap: 20px 15px;
-    padding: 0 10px;
-  }
-  
-  .logos-row img {
-    height: 35px;
-    max-width: 110px;
-  }
-}
-
-/* RESPONSIVE: Para pantallas muy pequeñas (ajuste fino) */
-@media (max-width: 360px) {
-  .logos-row {
-    gap: 15px 10px;
-  }
-  
-  .logos-row img {
-    height: 30px;
-    max-width: 100px;
-  }
-}
-
-
-
-/* ---------- SECCIÓN CAPACIDADES ---------- */
-/* SECCIÓN PRINCIPAL */
+/* Sección capacidades */
 .capabilities {
-  padding: 10px px;
-  
-  color: white;
+  padding: 10px 100px;
+  color: #fff;
   text-align: center;
+ background: #0f0f0ff8;
 }
 
 .cap-title {
   font-size: 3rem;
-  font-weight: 800;
+  font-weight: 800
 }
 
 .cap-subtitle {
   margin-top: 10px;
   font-size: 1.2rem;
-  opacity: 0.7;
+  opacity: .7
 }
 
-/* CONTENEDOR PRINCIPAL */
 .main-container {
   width: 100%;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0 auto
 }
 
-/* SECCIÓN DE CAPACIDADES */
 .cap-section {
-  margin-top: 60px;
+  margin-top: 60px
 }
 
-/* GRID - 3 columnas fijas con 2 filas */
 .cap-grid {
   margin-top: 70px;
   width: 100%;
   max-width: 2150px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas */
-  grid-template-rows: repeat(2, 1fr);    /* 2 filas fijas */
-  gap: 35px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 35px
 }
 
-/* CARD */
+/* Cards */
 .cap-card {
   position: relative;
   overflow: hidden;
   background: #1a1a1a;
   padding: 40px;
   border-radius: 22px;
-  transition: 0.35s ease;
-  height: 330px; /* Altura fija para consistencia */
+  transition: .35s ease;
+  height: 330px;
   display: flex;
   flex-direction: column;
-  text-align: left;
+  text-align: left
 }
 
-/* Títulos de las tarjetas */
 .cap-card h3 {
   position: relative;
   z-index: 2;
   text-align: left;
   margin-bottom: 10px;
   font-size: 1.6rem;
-  color: white;
+  color: #fff
 }
 
-/* Descripciones */
 .cap-description {
   text-align: left;
-  opacity: 0.8;
+  opacity: .8;
   line-height: 1.5;
   position: relative;
   z-index: 2;
-  flex-grow: 1; /* Ocupa el espacio disponible */
-  margin-bottom: 60px; /* Espacio para los chips */
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
+  flex-grow: 1;
+  margin-bottom: 60px;
+  color: rgba(255, 255, 255, .9);
+  font-size: 1rem
 }
 
-/* Efecto hover */
 .cap-card:hover {
-  transform: scale(1.05); /* Reducido ligeramente para mejor ajuste en grid */
+  transform: scale(1.05);
   background: #1d1d1d;
-  z-index: 10;
+  z-index: 10
 }
 
-/* Fondo animado */
-.cap-bg {
+.cap-bg-img {
   position: absolute;
   inset: 0;
-  opacity: 0.25;
+  opacity: .25;
   z-index: 0;
-  transition: 0.4s ease;
+  transition: .4s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover
 }
 
-.cap-card:hover .cap-bg {
-  opacity: 0.45;
-  transform: scale(1.05);
+.cap-card:hover .cap-bg-img {
+  opacity: .45;
+  transform: scale(1.05)
 }
 
-/* Chips */
 .chip-box {
   position: absolute;
   bottom: 20px;
@@ -690,120 +490,250 @@ background: #0f0f0ff8;
   gap: 10px;
   opacity: 0;
   transform: translateY(20px);
-  transition: 0.3s ease;
+  transition: .3s ease
 }
 
 .cap-card:hover .chip-box {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0)
 }
 
 .chip {
   background: #2a2a2a;
   padding: 6px 14px;
   border-radius: 10px;
-  font-size: 0.85rem;
-  opacity: 0.9;
+  font-size: .85rem;
+  opacity: .9;
   border: 1px solid #3a3a3a;
-  color: white;
+  color: #fff
 }
 
-/* FONDOS */
-.bg-1 {
-  background-image: url('/imgs/curbe-lines.webp');
-  background-size: cover;
-  background-position: center;
-}
-
-.bg-2 {
-  background-image: url('/imgs/cilindre.webp');
-  background-size: cover;
-  background-position: center;
-}
-
-.bg-3 {
-  background-image: url('/imgs/circle.webp');
-  background-size: cover;
-  background-position: center;
-}
-
-.bg-4 {
-  background-image: url('/imgs/rectangles.webp');
-  background-size: cover;
-  background-position: center;
-}
-
-.bg-5 {
-  background-image: url('/imgs/cicle-lines.webp');
-  background-size: cover;
-  background-position: center;
-}
-
-.bg-6 {
-  background-image: url('/imgs/Lines.webp');
-  background-size: cover;
-  background-position: center;
-}
-
-/* Responsive: En pantallas más pequeñas cambia a 2 columnas */
+/* Media queries */
 @media (max-width: 1024px) {
+  .nav-center {
+    display: none
+  }
+
+  .mobile-toggle {
+    display: flex
+  }
+
+  .scout-nav {
+    padding: 0 20px
+  }
+
+ 
+
   .cap-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
-    grid-template-rows: repeat(3, 1fr);    /* 3 filas en tablet */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr)
   }
-  
+
   .capabilities {
-    padding: 80px 5%;
+    padding: 80px 5%
   }
-  
+
   .cap-title {
-    font-size: 2.5rem;
+    font-size: 2.5rem
+  }
+
+  .logos-row {
+    gap: 60px
+  }
+
+  .logos-row img {
+    height: 45px
   }
 }
 
-/* Responsive: En móviles cambia a 1 columna */
-@media (max-width: 768px) {
-  .cap-grid {
-    grid-template-columns: 1fr; /* 1 columna en móvil */
-    grid-template-rows: repeat(6, auto); /* 6 filas en móvil */
-    gap: 25px;
+@media (max-width: 900px) {
+  .bg-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px
   }
-  
+}
+
+@media (max-width: 768px) {
+  .scout-nav {
+    height: 55px;
+    border-radius: 10px;
+    padding: 0 15px
+  }
+
+  .scout-nav.compact {
+    height: 50px
+  }
+
+  .logo {
+    font-size: 1.6rem
+  }
+
+  .logo-text {
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+    overflow: hidden
+  }
+
+  .logo {
+    gap: 0
+  }
+
+  .reserve-btn {
+    padding: 8px 22px;
+    font-size: 13px
+  }
+
+
+  .cap-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, auto);
+    gap: 25px
+  }
+
   .cap-card {
     height: auto;
     min-height: 300px;
-    padding: 30px;
+    padding: 30px
   }
-  
+
   .capabilities {
-    padding: 60px 4%;
+    padding: 60px 4%
   }
-  
+
   .cap-title {
-    font-size: 2rem;
+    font-size: 2rem
   }
-  
+
   .cap-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.1rem
   }
-  
+
   .chip-box {
+    position: static;
+    opacity: 1;
+    transform: none;
+    margin-top: 20px;
     left: 30px;
     right: 30px;
+    bottom: auto
+  }
+
+  .cap-card:hover .chip-box {
+    opacity: 1;
+    transform: none
+  }
+
+  .cap-description {
+    margin-bottom: 20px
+  }
+
+  .clients {
+    padding: 40px 15px
+  }
+
+  .clients-title {
+    font-size: 16px;
+    padding: 10px 25px;
+    margin-bottom: 40px;
+    line-height: 1.4
+  }
+
+  .logos-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px
+  }
+
+  .logos-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px 20px;
+    margin: 0;
+    padding: 0 20px;
+    transform: none !important;
+    justify-items: center;
+    align-items: center
+  }
+
+  .logos-row img {
+    height: 40px;
+    width: auto;
+    max-width: 130px;
+    margin: 0 auto;
+    display: block
+  }
+
+  .logos-row img:nth-child(odd):last-child {
+    grid-column: 1/-1;
+    justify-self: center
   }
 }
 
-/* Para pantallas muy grandes */
+@media (max-width: 500px) {
+  
+
+  .sub2 {
+    font-size: 32px
+  }
+}
+
+@media (max-width: 480px) {
+  .scout-nav {
+    width: 95%
+  }
+
+  .mobile-menu {
+    width: 85%;
+    padding: 90px 25px 30px
+  }
+
+
+
+  .clients {
+    padding: 30px 10px
+  }
+
+  .clients-title {
+    font-size: 14px;
+    padding: 8px 20px;
+    margin-bottom: 30px
+  }
+
+  .logos-row {
+    gap: 20px 15px;
+    padding: 0 10px
+  }
+
+  .logos-row img {
+    height: 35px;
+    max-width: 110px
+  }
+}
+
+@media (max-width: 360px) {
+  .logos-row {
+    gap: 15px 10px
+  }
+
+  .logos-row img {
+    height: 30px;
+    max-width: 100px
+  }
+}
+
 @media (min-width: 1600px) {
   .capabilities {
-    padding: 0px 10%;
+    padding: 0 10%
   }
 
   .cap-grid {
-    gap: 40px;
+    gap: 40px
   }
-  
+
   .cap-card {
-    height: 350px;
+    height: 350px
   }
 }
+
+
