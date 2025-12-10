@@ -126,7 +126,3 @@ document.querySelectorAll(".mobile-nav .nav-item, .mobile-reserve .reserve-btn")
 // Ejecutar al cargar
 updateLogoScroll();
 handleScroll();
-
-
-
-
