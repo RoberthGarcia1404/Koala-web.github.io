@@ -1,0 +1,344 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f7f7f7;
+  overflow-x: hidden;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  opacity: 0.85;
+}
+
+.nav a {
+  font-size: 14px;
+  text-decoration: none;
+  margin-left: 25px;
+  color: #000;
+  opacity: 0.85;
+}
+
+/* HERO */
+.hero {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 50px;
+}
+
+/* Fondo con imágenes difuminadas */
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  padding: 40px;
+  opacity: 0.17;
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+.bg-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Texto del Hero */
+.hero-text {
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+}
+
+.hero-text h1 {
+  font-size: clamp(42px, 6vw, 110px);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.sub1 {
+  font-size: 28px;
+  font-family: 'Playfair Display', serif;
+  opacity: 0.7;
+}
+
+.sub2 {
+  display: block;
+  font-size: 48px;
+  font-family: 'Playfair Display', serif;
+  opacity: 0.8;
+  margin-top: 10px;
+}
+
+.highlight {
+  color: #000;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .bg-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+  }
+
+  .nav {
+    padding: 15px 25px;
+  }
+
+  .nav a {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero-text h1 {
+    font-size: 40px;
+  }
+
+  .sub2 {
+    font-size: 32px;
+  }
+}
+
+
+
+
+
+
+
+
+
+/* SECCIÓN CLIENTES */
+.clients {
+  background: #1a1a1a;
+  padding: 80px 0;
+  color: #cfcfcf;
+  text-align: center;
+}
+
+.clients-title {
+  background: rgba(255,255,255,0.05);
+  padding: 12px 35px;
+  border-radius: 8px;
+  display: inline-block;
+  font-size: 18px;
+  margin-bottom: 60px;
+}
+
+.logos-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.logos-row {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin: 40px 0;
+  transition: transform 0.3s ease-out;
+}
+
+.logos-row img {
+  height: 60px;
+  opacity: 0.85;
+  filter: grayscale(100%);
+  transition: opacity 0.2s;
+}
+
+.logos-row img:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* RESPONSIVE: En móviles NO se mueven */
+@media (max-width: 768px) {
+  .logos-row {
+    transform: none !important;
+  }
+
+  .logos-row img {
+    height: 40px;
+  }
+
+  .clients-title {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
+
+
+
+
+/* ---------- SECCIÓN CAPACIDADES ---------- */
+.capabilities {
+  padding: 100px 8%;
+  background: #0f0f0f;
+  color: white;
+  text-align: center;
+}
+
+.cap-title {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.cap-subtitle {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+
+
+/* GRID */
+.cap-grid {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* CARD */
+.cap-card {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+  padding: 40px;
+  border-radius: 22px;
+  transition: 0.35s ease;
+  height: 330px;
+}
+
+.cap-card:hover {
+  transform: scale(1.08);   /* Aumenta visualmente */
+  background: #1d1d1d;
+  z-index: 10;
+}
+
+/* Fondo animado */
+.cap-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+  z-index: 0;
+  transition: 0.4s ease;
+}
+
+.cap-card:hover .cap-bg {
+  opacity: 0.45;
+  transform: scale(1.05);
+}
+
+/* Títulos e info */
+.cap-card h3 {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+}
+
+.cap-description {
+  text-align: left;
+  opacity: 0.8;
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+}
+
+/* Chips */
+.chip-box {
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.3s ease;
+}
+
+.cap-card:hover .chip-box {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chip {
+  background: #2a2a2a;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  border: 1px solid #3a3a3a;
+}
+
+/* ----------- FONDOS PERSONALIZADOS ----------- */
+.bg-lines-green {
+  background-image: url('/imgs/66e9e636087b75d17e687a20_ai-shapes.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-circles-pink {
+  background-image: url('/imgs/66e9e63603619970bbea2c93_cloud-shapes.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-grid-blue {
+  background-image: url('/imgs/66e9e63635dfd05e3a7203ff_data-shapes.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* ----------- FONDOS PERSONALIZADOS ----------- */
+.bg-4 {
+  background-image: url('/imgs/66e9e636087b75d17e687a20_ai-shapes.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-5 {
+  background-image: url('/imgs/66e9e63603619970bbea2c93_cloud-shapes.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-6 {
+  background-image: url('/imgs/66e9e63635dfd05e3a7203ff_data-shapes.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+
+

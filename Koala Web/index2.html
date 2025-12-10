@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scout Menu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 200vh;
+        }
+
+        /* MENÚ PRINCIPAL */
+        .scout-nav {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 1200px;
+            height: 60px;
+            background: rgba(15, 15, 15, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .scout-nav.compact {
+            top: 15px;
+            height: 55px;
+            background: rgba(10, 10, 10, 0.95);
+        }
+
+        /* LOGO */
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        /* MENÚ CENTRAL */
+        .nav-center {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-item:hover {
+            color: #fff;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #fff;
+        }
+
+        /* BOTÓN RESERVA */
+        .reserve-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 10px 28px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .reserve-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-1px);
+        }
+
+        /* BOTÓN MÓVIL */
+        .mobile-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .mobile-toggle span {
+            width: 18px;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        /* MENÚ MÓVIL */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: rgba(15, 15, 15, 0.98);
+            backdrop-filter: blur(30px);
+            padding: 100px 30px 40px;
+            z-index: 999;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .mobile-nav .nav-item {
+            font-size: 18px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* OVERLAY */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* CONTENIDO */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 16px 36px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .hero-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .nav-center {
+                display: none;
+            }
+            
+            .mobile-toggle {
+                display: flex;
+            }
+            
+            .scout-nav {
+                padding: 0 20px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .scout-nav {
+                height: 55px;
+                border-radius: 10px;
+            }
+            
+            .scout-nav.compact {
+                height: 50px;
+            }
+            
+            .logo {
+                font-size: 1.6rem;
+            }
+            
+            .reserve-btn {
+                padding: 8px 22px;
+                font-size: 13px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .scout-nav {
+                width: 95%;
+                padding: 0 15px;
+            }
+            
+            .mobile-menu {
+                width: 85%;
+                padding: 90px 25px 30px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- MENÚ SIMPLIFICADO -->
+    <nav class="scout-nav" id="mainNav">
+        <a href="#" class="logo">SCOUT</a>
+        
+        <!-- MENÚ CENTRAL (desktop) -->
+        <div class="nav-center">
+            <a href="#" class="nav-item active">Traveler SUV</a>
+            <a href="#" class="nav-item">Terra Truck</a>
+            <a href="#" class="nav-item">Our Story</a>
+        </div>
+        
+        <!-- ACCIONES -->
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <button class="reserve-btn">RESERVE</button>
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- MENÚ MÓVIL -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-nav">
+            <a href="#" class="nav-item active">Traveler SUV</a>
+            <a href="#" class="nav-item">Terra Truck</a>
+            <a href="#" class="nav-item">Our Story</a>
+            <div style="margin-top: 30px;">
+                <button class="reserve-btn" style="width: 100%;">RESERVE NOW</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- OVERLAY -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div>
+            <h1>Be part of the pioneers.</h1>
+            <p>Reservations open now for the next generation of electric adventure vehicles.</p>
+            <button class="hero-btn">RESERVE NOW</button>
+        </div>
+    </section>
+
+    <script>
+        // Elementos
+        const mainNav = document.getElementById('mainNav');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const toggleSpans = mobileToggle.querySelectorAll('span');
+        
+        let menuOpen = false;
+        
+        // Toggle menú móvil
+        mobileToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            
+            if (menuOpen) {
+                mobileMenu.classList.add('active');
+                menuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Animación a X
+                toggleSpans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                toggleSpans[1].style.opacity = '0';
+                toggleSpans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                // Animación a hamburguesa
+                toggleSpans[0].style.transform = 'rotate(0) translate(0, 0)';
+                toggleSpans[1].style.opacity = '1';
+                toggleSpans[2].style.transform = 'rotate(0) translate(0, 0)';
+            }
+        });
+        
+        // Cerrar menú al hacer clic en overlay
+        menuOverlay.addEventListener('click', () => {
+            if (menuOpen) {
+                mobileToggle.click();
+            }
+        });
+        
+        // Cerrar menú al hacer clic en enlace (móvil)
+        document.querySelectorAll('.mobile-nav .nav-item, .mobile-nav .reserve-btn').forEach(item => {
+            item.addEventListener('click', () => {
+                if (menuOpen) {
+                    mobileToggle.click();
+                }
+            });
+        });
+        
+        // Scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                mainNav.classList.add('compact');
+            } else {
+                mainNav.classList.remove('compact');
+            }
+        });
+        
+        // Cerrar menú al redimensionar a desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024 && menuOpen) {
+                mobileToggle.click();
+            }
+        });
+        
+        // Inicializar
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+
+/* CARD */
+.cap-card {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+  padding: 40px;
+  border-radius: 22px;
+  transition: 0.35s ease;
+  height: 330px;
+}
+
+.cap-card:hover {
+  height: 420px;
+  background: #1d1d1d;
+}
+
+/* Fondo animado */
+.cap-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+  z-index: 0;
+  transition: 0.4s ease;
+}
+
+.cap-card:hover .cap-bg {
+  opacity: 0.45;
+  transform: scale(1.05);
+}
+
+/* Títulos e info */
+.cap-card h3 {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+}
+
+.cap-description {
+  text-align: left;
+  opacity: 0.8;
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+}
+
+/* Chips */
+.chip-box {
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.3s ease;
+}
+
+.cap-card:hover .chip-box {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chip {
+  background: #2a2a2a;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  border: 1px solid #3a3a3a;
+}
+
+/* ----------- FONDOS PERSONALIZADOS ----------- */
+.bg-lines-green {
+  background-image: url('/imgs/66e9e636087b75d17e687a20_ai-shapes.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-circles-pink {
+  background-image: url('/imgs/66e9e63603619970bbea2c93_cloud-shapes.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-grid-blue {
+  background-image: url('/imgs/66e9e63635dfd05e3a7203ff_data-shapes.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+
+
+
+
+
+
+
+    <!-- CARD 1 -->
+    <div class="cap-card">
+      <div class="cap-bg bg-lines-green"></div>
+
+      <h3>Inteligencia artificial</h3>
+      <p class="cap-description">
+        Bases de datos vectoriales, RAG, flujos multiagente, MCP, AI-UX
+      </p>
+
+      <div class="chip-box">
+        <span class="chip">OpenAI</span>
+        <span class="chip">Claude</span>
+        <span class="chip">Llama</span>
+        <span class="chip">LangChain</span>
+        <span class="chip">TensorFlow</span>
+        <span class="chip">Python</span>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="cap-card">
+      <div class="cap-bg bg-circles-pink"></div>
+
+      <h3>Datos</h3>
+      <p class="cap-description">
+        ETL, canalizaciones de procesamiento, enriquecimiento y aprendizaje automático
+      </p>
+
+      <div class="chip-box">
+        <span class="chip">BigQuery</span>
+        <span class="chip">Snowflake</span>
+        <span class="chip">Airflow</span>
+        <span class="chip">Python</span>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="cap-card">
+      <div class="cap-bg bg-grid-blue"></div>
+
+      <h3>Nube</h3>
+      <p class="cap-description">
+        Infraestructura, DevOps, API, automatización y escalabilidad
+      </p>
+
+      <div class="chip-box">
+        <span class="chip">AWS</span>
+        <span class="chip">Azure</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Kubernetes</span>
+      </div>
+    </div>
+
+  </div>
+
+<div class="cap-grid">
+
+ 
+
+
+    
+
