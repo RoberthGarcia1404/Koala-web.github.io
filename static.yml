@@ -1,5 +1,5 @@
 # Workflow para desplegar contenido estático en GitHub Pages
-name: Deploy Ruleta-Dinamica
+name: Deploy Koala-web.github.io
 
 on:
   push:
