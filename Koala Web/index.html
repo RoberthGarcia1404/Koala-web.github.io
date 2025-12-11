@@ -28,38 +28,54 @@
 
 
 <body>
-    <nav class="scout-nav" id="mainNav">
-        <a href="index.html" class="logo">
-            <img src="imgs/logos/koala.png" alt="Logo" class="logo-img">
-            <span>Koala</span>
-        </a>
-        <div class="nav-center">
-            <a href="#" class="nav-item active">Herramientas</a>
-            <a href="#" class="nav-item">Desarrollo</a>
-            <a href="#" class="nav-item">Proyectos</a>
-            <a href="#" class="nav-item">Nosotros</a>
-        </div>
-        <div class="nav-actions">
-            <button class="reserve-btn">CONTACTAR</button>
-            <div class="mobile-toggle" id="mobileToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    
+    <!-- ================= NAV ================= -->
 
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-nav">
-            <a href="#" class="nav-item active">Herramientas</a>
-            <a href="#" class="nav-item">Desarrollo</a>
-            <a href="#" class="nav-item">Proyectos</a>
-            <a href="#" class="nav-item">Nosotros</a>
-            <div class="mobile-reserve">
-                <button class="reserve-btn">CONTACTAR</button>
-            </div>
+<nav class="scout-nav" id="mainNav">
+    <a href="index.html" class="logo">
+        <img src="imgs/logos/koala.png" alt="Logo" class="logo-img">
+        <span>Koala</span>
+    </a>
+
+    <div class="nav-center">
+        <a href="#" class="nav-item active">Herramientas</a>
+        <a href="#" class="nav-item">Desarrollo</a>
+        <a href="#" class="nav-item">Proyectos</a>
+        <a href="#" class="nav-item">Nosotros</a>
+    </div>
+
+    <div class="nav-actions">
+        <button class="reserve-btn">CONTACTAR</button>
+
+        <!-- BOTÓN MÓVIL -->
+        <div class="mobile-toggle" id="mobileToggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </div>
+</nav>
+
+<!-- MENU MÓVIL -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-nav">
+        <a href="#" class="nav-item active">Herramientas</a>
+        <a href="#" class="nav-item">Desarrollo</a>
+        <a href="#" class="nav-item">Proyectos</a>
+        <a href="#" class="nav-item">Nosotros</a>
+
+        <div class="mobile-reserve">
+            <button class="reserve-btn">CONTACTAR</button>
+        </div>
+    </div>
+</div>
+
+<!-- ❗ NECESARIO PARA QUE NO SALGAN ERRORES -->
+<div class="menu-overlay" id="menuOverlay"></div>
+
+
+
+<!-- ================= HERO ================= -->
 
 
 <section class="hero-koala">
