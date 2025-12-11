@@ -1,15 +1,20 @@
-/* -------- SLIDER -------- */
+/* ========================
+   SLIDER — Optimizado
+======================== */
 const slides = document.querySelectorAll(".slide");
 let index = 0;
 
-setInterval(() => {
-    slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
-}, 4500);
+if (slides.length > 1) {
+    setInterval(() => {
+        slides[index].classList.remove("active");
+        index = (index + 1) % slides.length;
+        slides[index].classList.add("active");
+    }, 4500);
+}
 
-
-/* -------- TEXTO QUE SE ESCRIBE -------- */
+/* ========================
+   TEXTO ESCRITO — Optimizado
+======================== */
 const words = [
   "Desarrollo Web",
   "Software presonalizado",
@@ -21,126 +26,119 @@ const words = [
 ];
 
 let i = 0, j = 0, deleting = false;
-const typed = document.querySelector('.typed');
+const typed = document.querySelector(".typed");
 const speed = 75;
 
-function typeEffect() {
-  let word = words[i];
+(function typeEffect() {
+    const word = words[i];
 
-  if (!deleting) {
-    typed.textContent = word.slice(0, j++);
-    if (j === word.length + 1) {
-      deleting = true;
-      setTimeout(typeEffect, 1200);
-      return;
+    typed.textContent = deleting
+        ? word.slice(0, --j)
+        : word.slice(0, ++j);
+
+    if (!deleting && j === word.length) {
+        deleting = true;
+        return setTimeout(typeEffect, 1000);
     }
-  } else {
-    typed.textContent = word.slice(0, j--);
-    if (j === 0) {
-      deleting = false;
-      i = (i + 1) % words.length;
+
+    if (deleting && j === 0) {
+        deleting = false;
+        i = (i + 1) % words.length;
     }
-  }
 
-  setTimeout(typeEffect, deleting ? speed / 1.4 : speed);
-}
-
-typeEffect();
+    setTimeout(typeEffect, deleting ? speed * 0.7 : speed);
+})();
 
 
-
-// =========================
-// LOGOS – Movimiento Scroll
-// =========================
+/* ================================
+   LOGOS Scroll — Ultra Optimizado
+================================ */
 const topRow = document.querySelector(".row-top");
 const bottomRow = document.querySelector(".row-bottom");
 
+let lastScroll = 0;
+let isMobile = window.innerWidth < 768;
+
 function updateLogoScroll() {
-  const isMobile = window.innerWidth < 768;
+    const scrollY = lastScroll * 0.06;
 
-  if (isMobile) {
-    topRow && (topRow.style.transform = "translateX(0)");
-    bottomRow && (bottomRow.style.transform = "translateX(0)");
-    return;
-  }
-
-  const move = window.scrollY * 0.06;
-  topRow && (topRow.style.transform = `translateX(${move}px)`);
-  bottomRow && (bottomRow.style.transform = `translateX(-${move}px)`);
+    if (!isMobile) {
+        if (topRow) topRow.style.transform = `translateX(${scrollY}px)`;
+        if (bottomRow) bottomRow.style.transform = `translateX(-${scrollY}px)`;
+    }
 }
 
-window.addEventListener("scroll", updateLogoScroll);
-window.addEventListener("resize", updateLogoScroll);
+window.addEventListener("scroll", () => {
+    lastScroll = window.scrollY;
+    requestAnimationFrame(updateLogoScroll);
+});
 
-// =========================
-// MENÚ MÓVIL (CORREGIDO)
-// =========================
+window.addEventListener("resize", () => {
+    isMobile = window.innerWidth < 768;
+    if (isMobile) {
+        if (topRow) topRow.style.transform = "translateX(0)";
+        if (bottomRow) bottomRow.style.transform = "translateX(0)";
+    }
+});
 
-// Tomar los elementos
+
+/* ================================
+   MENÚ MÓVIL — Optimizado
+================================ */
+
+// Cache de elementos
 const mainNav = document.getElementById("mainNav");
 const mobileToggle = document.getElementById("mobileToggle");
 const mobileMenu = document.getElementById("mobileMenu");
 const menuOverlay = document.getElementById("menuOverlay");
+const toggleSpans = mobileToggle ? mobileToggle.querySelectorAll("span") : null;
 
 let menuOpen = false;
 
-// Verificar que sí existan antes de usarlos
-if (mobileToggle) {
-    var toggleSpans = mobileToggle.querySelectorAll("span");
-}
-
-// ============ FUNCIONES ============
-
-function toggleMobileMenu() {
+// Funcion compacta de toggle
+function toggleMobileMenu(forceClose = false) {
     if (!mobileMenu || !menuOverlay) return;
 
-    menuOpen = !menuOpen;
+    menuOpen = forceClose ? false : !menuOpen;
 
     mobileMenu.classList.toggle("active", menuOpen);
     menuOverlay.classList.toggle("active", menuOpen);
+    document.body.style.overflow = menuOpen ? "hidden" : "";
 
-    document.body.style.overflow = menuOpen ? "hidden" : "auto";
-
-    // Animación del botón hamburguesa / X
+    // btn hamburguesa
     if (toggleSpans) {
-        toggleSpans[0].style.transform = menuOpen ? "rotate(45deg) translate(5px, 5px)" : "rotate(0)";
-        toggleSpans[1].style.opacity = menuOpen ? "0" : "1";
-        toggleSpans[2].style.transform = menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "rotate(0)";
+        toggleSpans[0].style.transform = menuOpen ? "rotate(45deg) translate(5px, 5px)" : "";
+        toggleSpans[1].style.opacity = menuOpen ? "0" : "";
+        toggleSpans[2].style.transform = menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "";
     }
 }
 
-function closeMobileMenu() {
-    if (menuOpen) toggleMobileMenu();
-}
-
-function handleScroll() {
+// Navbar compactado en scroll
+window.addEventListener("scroll", () => {
     if (mainNav) {
-        mainNav.classList.toggle("compact", window.scrollY > 50);
+        const shrink = window.scrollY > 50;
+        mainNav.classList.toggle("compact", shrink);
     }
-}
+});
 
-function handleResize() {
-    if (window.innerWidth > 1024) closeMobileMenu();
-}
+// Cerrar menú si pasa a escritorio
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 1024) toggleMobileMenu(true);
+});
 
-// ============ EVENTOS ============
-
-// Botón hamburguesa
+// Acción botón hamburguesa
 if (mobileToggle) {
-    mobileToggle.addEventListener("click", toggleMobileMenu);
+    mobileToggle.addEventListener("click", () => toggleMobileMenu());
 }
 
-// Click en overlay para cerrar
+// Cerrar al tocar overlay
 if (menuOverlay) {
-    menuOverlay.addEventListener("click", closeMobileMenu);
+    menuOverlay.addEventListener("click", () => toggleMobileMenu(true));
 }
 
-// Scroll para compactar navbar
-window.addEventListener("scroll", handleScroll);
-
-// Cerrar si pasa a escritorio
-window.addEventListener("resize", handleResize);
-
-// Cerrar al hacer clic en un enlace del menú móvil
-document.querySelectorAll(".mobile-nav .nav-item, .mobile-reserve .reserve-btn")
-    .forEach(item => item.addEventListener("click", closeMobileMenu));
+// Delegación de eventos para cerrar menú en clics internos
+document.addEventListener("click", (e) => {
+    if (e.target.matches(".mobile-nav .nav-item, .mobile-reserve .reserve-btn")) {
+        toggleMobileMenu(true);
+    }
+});
